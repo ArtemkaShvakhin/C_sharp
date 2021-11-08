@@ -19,7 +19,7 @@ namespace lab5
         }
         public void BuyProduct(string product, string name, double cost)
         {
-            if(Shop.Availability(product, name, cost))
+            if (Shop.Availability(product, name, cost))
             {
                 Product temp = new Product(product, name, cost);
                 Console.WriteLine($"Покупка {product} {name} стоимостью {cost}$ успешно совершена!");
@@ -33,7 +33,7 @@ namespace lab5
         }
         public void ShowPurchases()
         {
-            Console.WriteLine($"Текущие покупки {_surname} {_name}: " + "\n");
+            Console.WriteLine($"\nТекущие покупки {_surname} {_name}: " + "\n");
             for (int i = 0; i < PurchaseAmount; ++i)
             {
                 purchases[i].ProductInfo();
@@ -45,8 +45,8 @@ namespace lab5
             {
                 _totalCost += purchases[i].GetProductCost();
             }
-            Console.WriteLine("\n" + $"Итоговая сумма всех заказов {_surname} {_name}: {_totalCost}$" + "\n");
+            Console.WriteLine($"Итоговая сумма всех заказов {_surname} {_name}: {_totalCost}$" + "\n");
         }
-        
+
     }
 }

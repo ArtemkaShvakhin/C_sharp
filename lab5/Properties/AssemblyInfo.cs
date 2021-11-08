@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные с этой сборкой.
-[assembly: AssemblyTitle("r1")]
+[assembly: AssemblyTitle("053501_Дембовский_Lab5")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("r1")]
+[assembly: AssemblyProduct("053501_Дембовский_Lab5")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID представляет идентификатор typelib, если этот проект доступен из модели COM
-[assembly: Guid("6b672470-f0e4-4ed0-a82e-da62f1dea101")]
+[assembly: Guid("ce9d79d4-2413-4a3c-a90d-25cf5349f9af")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

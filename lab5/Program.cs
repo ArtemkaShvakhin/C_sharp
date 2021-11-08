@@ -10,6 +10,7 @@ namespace lab5
     {
         static void Main(string[] args)
         {
+            //Create clients
             Person p1 = new Person("Артём", "Дембовский");
             Person p2 = new Person("Святослав", "Швахин");
             //Adding products to store
@@ -31,7 +32,6 @@ namespace lab5
             p2.BuyProduct("Лотерейный билет", "Честный", 0.2);
             p2.ShowPurchases();
             p2.TotalCost();
-            Console.ReadLine();
         }
     }
 }

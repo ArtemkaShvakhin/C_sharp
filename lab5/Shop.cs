@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 namespace lab5
 {
     static class Shop
-    {        
+    {
         private static uint _productAmount;
         private static MyCustomCollections<Product> store = new MyCustomCollections<Product>();
+        public delegate void ChangeClientsList(string name, string description);
+        public static event ChangeClientsList NewClient;
         public static void AddProduct(string product, string name, double cost)
         {
             Product pr = new Product(product, name, cost);
             store.Add(pr);
-            _productAmount++;            
+            _productAmount++;
         }
         public static void RemoveProduct(string product, string name, double cost)
         {
@@ -28,7 +30,7 @@ namespace lab5
             for (int i = 0; i < _productAmount; ++i)
             {
                 if (store[i].GetProduct() == product && store[i].GetProductName() == name && store[i].GetProductCost() == cost)
-                {   
+                {
                     store.Remove(store[i]);
                     _productAmount--;
                     return true;
@@ -40,6 +42,5 @@ namespace lab5
         {
             return _productAmount;
         }
-
     }
 }
