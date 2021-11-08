@@ -10,8 +10,6 @@ namespace lab5
     {
         private static uint _productAmount;
         private static MyCustomCollections<Product> store = new MyCustomCollections<Product>();
-        public delegate void ChangeClientsList(string name, string description);
-        public static event ChangeClientsList NewClient;
         public static void AddProduct(string product, string name, double cost)
         {
             Product pr = new Product(product, name, cost);

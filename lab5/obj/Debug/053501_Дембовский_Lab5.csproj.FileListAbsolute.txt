@@ -5,3 +5,10 @@ C:\C#\053501_Дембовский_Lab5\obj\Debug\053501_Дембовский_Lab
 C:\C#\053501_Дембовский_Lab5\obj\Debug\053501_Дембовский_Lab5.csproj.CoreCompileInputs.cache
 C:\C#\053501_Дембовский_Lab5\obj\Debug\053501_Дембовский_Lab5.exe
 C:\C#\053501_Дембовский_Lab5\obj\Debug\053501_Дембовский_Lab5.pdb
+C:\C#\lab5\bin\Debug\053501_Дембовский_Lab5.exe.config
+C:\C#\lab5\bin\Debug\053501_Дембовский_Lab5.exe
+C:\C#\lab5\bin\Debug\053501_Дембовский_Lab5.pdb
+C:\C#\lab5\obj\Debug\053501_Дембовский_Lab5.csprojAssemblyReference.cache
+C:\C#\lab5\obj\Debug\053501_Дембовский_Lab5.csproj.CoreCompileInputs.cache
+C:\C#\lab5\obj\Debug\053501_Дембовский_Lab5.exe
+C:\C#\lab5\obj\Debug\053501_Дембовский_Lab5.pdb
