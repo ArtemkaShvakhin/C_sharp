@@ -10,33 +10,37 @@ namespace lab6
     {
         private static uint _productAmount;
         private static MyCustomCollections<Product> store = new MyCustomCollections<Product>();
+        private static MyCustomCollections<Person> clientList = new MyCustomCollections<Person>();
         public delegate void ChangeClientsList(string name, string description);
-        public static event ChangeClientsList NewClient; 
-        public static void AddProduct(string product, string name, double cost)
+        public delegate void ChangeProductList(string name, string description);
+        public static event ChangeClientsList NewClient;
+        public static event ChangeProductList NewProduct;
+        public static void AddProduct(Product pr)
         {
-            Product pr = new Product(product, name, cost);
             store.Add(pr);
             _productAmount++;
+            NewProduct?.Invoke("New product", $"{pr.GetProduct} {pr.GetProductName} {pr.GetProductCost}");
         }
-        public static void RemoveProduct(string product, string name, double cost)
+        public static void RemoveProduct(Product pr)
         {
-            Product pr = new Product(product, name, cost);
             store.Remove(pr);
             _productAmount--;
         }
-        public static bool Availability(string product, string name, double cost)
+        public static bool Availability(Product pr)
         {
-            Product temp = new Product(product, name, cost);
             for (int i = 0; i < _productAmount; ++i)
             {
-                if (store[i].GetProduct() == product && store[i].GetProductName() == name && store[i].GetProductCost() == cost)
+                if (store[i].GetProduct == pr.GetProduct && store[i].GetProductName == pr.GetProductName && store[i].GetProductCost == pr.GetProductCost)
                 {
-                    store.Remove(store[i]);
-                    _productAmount--;
                     return true;
                 }
             }
             return false;
+        }
+        public static void AddClient(Person pers)
+        {
+            clientList.Add(pers);
+            NewClient?.Invoke("New client", $"{pers.Name} {pers.Surname} was added to client list");
         }
         public static uint Amount()
         {

@@ -16,17 +16,17 @@ namespace lab6
             _name = name;
             _cost = cost;
         }
-        public string GetProduct()
+        public string GetProduct
         {
-            return _product;
+            get { return _product; }
         }
-        public string GetProductName()
+        public string GetProductName
         {
-            return _name;
+            get { return _name; }
         }
-        public double GetProductCost()
+        public double GetProductCost
         {
-            return _cost;
+            get { return _cost; }
         }
         public void ProductInfo()
         {

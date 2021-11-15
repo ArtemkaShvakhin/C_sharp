@@ -8,14 +8,20 @@ namespace lab6
 {
     class Event
     {
-        private string _name, _discription;
+        private string _name, _description;
         public Event(string name, string description)
         {
             _name = name;
-            _discription = description;
+            _description = description;
         }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string GetName
+        {
+            get { return _name; }
+        }
+        public string GetDescription
+        {
+            get { return _description; }
+        }
     }
     class Journal
     {
@@ -23,9 +29,12 @@ namespace lab6
         public void AddEvent(string name, string description)
         {
             Events.Add(new Event(name, description));
+        }
+        public void PrintEvents()
+        { 
             for (int i = 0; i < Events.Count(); ++i)
             {
-                Console.WriteLine($"Name: {Events[i].Name}" + "\t" + $"Description: {Events[i].Description}");
+                Console.WriteLine($"Name: {Events[i].GetName}" + "\t" + $"Description: {Events[i].GetDescription}");
             }
         }
     }

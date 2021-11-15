@@ -12,28 +12,39 @@ namespace lab6
         private string _name, _surname;
         private uint PurchaseAmount = 0;
         private double _totalCost;
+        public delegate void Buy(string name, string description);
+        public event Buy NewPurchase;
         public Person(string name, string surname)
         {
             _name = name;
             _surname = surname;
         }
-        public void BuyProduct(string product, string name, double cost)
+        public string Name
         {
-            if (Shop.Availability(product, name, cost))
+            get { return _name; }
+        }
+
+        public string Surname
+        { 
+            get { return _surname; }
+        }
+        public void BuyProduct(Product pr)
+        {
+            if (Shop.Availability(pr))
             {
-                Product temp = new Product(product, name, cost);
-                Console.WriteLine($"Покупка {product} {name} стоимостью {cost}$ успешно совершена!");
-                purchases.Add(temp);
+                Console.WriteLine($"{pr.GetProduct} {pr.GetProductName} successfully finish for {pr.GetProductCost}$");
+                purchases.Add(pr);
                 PurchaseAmount++;
+                NewPurchase?.Invoke("New purchase", $"{Name} {Surname} bought {pr.GetProduct} {pr.GetProductName} for {pr.GetProductCost}$");
             }
             else
             {
-                Console.WriteLine($"К сожалению товар \"{product} {name}\" отсутствует на нашем складе(");
+                Console.WriteLine($"Unfortunately there isn't \"{pr.GetProduct} {pr.GetProductName}\" in our store(");
             }
         }
         public void ShowPurchases()
         {
-            Console.WriteLine($"Текущие покупки {_surname} {_name}: " + "\n");
+            Console.WriteLine($"Current purchases {_surname} {_name}: " + "\n");
             for (int i = 0; i < PurchaseAmount; ++i)
             {
                 purchases[i].ProductInfo();
@@ -43,9 +54,9 @@ namespace lab6
         {
             for (int i = 0; i < PurchaseAmount; ++i)
             {
-                _totalCost += purchases[i].GetProductCost();
+                _totalCost += purchases[i].GetProductCost;
             }
-            Console.WriteLine("\n" + $"Итоговая сумма всех заказов {_surname} {_name}: {_totalCost}$" + "\n");
+            Console.WriteLine("\n" + $"Total sum of all purchases {_surname} {_name}: {_totalCost}$" + "\n");
         }
 
     }

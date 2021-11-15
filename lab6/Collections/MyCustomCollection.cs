@@ -16,10 +16,6 @@ namespace lab6
             {
                 _data = data;
             }
-            public Node()
-            {
-
-            }
         }
         private Node head;
         private Node current;
@@ -62,41 +58,41 @@ namespace lab6
         {
             return size;
         }
-    public void Add(T item)
-    {
-        Node temp = new Node(item);
-        if (head == null)
+        public void Add(T item)
         {
-            temp.next = null;
-            head = temp;
-            size++;
-        }
-        else
-        {
-            temp = head;
-            while (temp.next != null)
+            Node temp = new Node(item);
+            if (head == null)
             {
-                temp = temp.next;
+                temp.next = null;
+                head = temp;
+                size++;
             }
-            temp.next = new Node(item);
-            size++;
+            else
+            {
+                temp = head;
+                while (temp.next != null)
+                {
+                    temp = temp.next;
+                }
+                temp.next = new Node(item);
+                size++;
+            }
         }
-    }
         public void Remove(T item)
         {
-            bool b = false;
+            bool contains = false;
             if (size == 0)
             {
                 throw new Exception("There is no elements in collection!");
             }
             else
             {
-                Node temp = new Node();
+                Node temp;
                 if (head._data.Equals(item))
                 {
                     head = head.next;
                     size--;
-                    b = true;
+                    contains = true;
                 }
                 temp = head;
                 while (temp.next != null)
@@ -105,7 +101,7 @@ namespace lab6
                     {
                         temp.next = temp.next.next;
                         size--;
-                        b = true;
+                        contains = true;
                     }
                     else
                     {
@@ -115,15 +111,15 @@ namespace lab6
                     {
                         temp = null;
                         size--;
-                        b = true;
+                        contains = true;
                     }
                 }
             }
             try
             {
-                if (!b)
+                if (!contains)
                 {
-                    throw new Exception($"Объект {item} отсутствует в коллекции!");
+                    throw new Exception($"There isn't object {item} in collection!");
                 }
             }
             catch (Exception ex)
@@ -131,60 +127,61 @@ namespace lab6
                 Console.WriteLine($"{ex.Message}");
             }
         }
-    public T RemoveCurrent()
-    {
-        if (size == 0)
+        public T RemoveCurrent()
         {
-            throw new Exception("There is no elements in collection!");
-        }
-        else if (current == null)
-        {
-            throw new ArgumentNullException();
-        }
-        else
-        {
-            if (head == current)
+            if (size == 0)
             {
-                head = head.next;
-                size--;
+                throw new Exception("There is no elements in collection!");
+            }
+            else if (current == null)
+            {
+                throw new ArgumentNullException();
             }
             else
             {
-                Node temp = new Node();
-                temp = head;
-                while (temp.next != current)
+
+                if (head == current)
                 {
-                    temp = temp.next;
+                    head = head.next;
+                    size--;
                 }
-                temp.next = temp.next.next;
-                size--;
+                else
+                {
+                    Node temp;
+                    temp = head;
+                    while (temp.next != current)
+                    {
+                        temp = temp.next;
+                    }
+                    temp.next = temp.next.next;
+                    size--;
+                }
             }
+            return current._data;
         }
-        return current._data;
-    }
-    public void Print()
-    {
-        if (size == 0)
+        public void Print()
         {
-            throw new Exception("Error! There is no elements in collection");
-        }
-        else
-        {
-            Node temp = current;
-            current = head;
-            for (int i = 0; i < size; i++)
+            if (size == 0)
             {
-                Console.Write(current._data + " ");
-                current = current.next;
+                throw new Exception("Error! There is no elements in collection");
             }
-            current = temp;
-        }   
-        Console.WriteLine();
-}
-    public T this[int index]
-    {
-        get
+            else
+            {
+                Node temp = current;
+                current = head;
+                for (int i = 0; i < size; i++)
+                {
+                    Console.Write(current._data + " ");
+                    current = current.next;
+                }
+                current = temp;
+            }   
+            Console.WriteLine();
+        }
+        public T this[int index]
         {
+            get
+            {
                 Node temp = head;
                 try
                 {
@@ -192,15 +189,16 @@ namespace lab6
                     {
                         temp = temp.next;
                     }
+                    return temp._data;
                 }
                 catch (NullReferenceException)
                 {
-                    Console.WriteLine($"Ошибка: Обращение по некорректному индексу коллекции!");
+                    Console.WriteLine($"Error! Incorrect index!");
                 }
-                return temp._data;
-        }
-        set
-        {
+                return temp._data;                        //ASK!!!!!!!!!!!!!!!
+            }
+            set
+            {
                 try
                 {
                     Node temp = head;
@@ -212,9 +210,9 @@ namespace lab6
                 }
                 catch(NullReferenceException)
                 {
-                    Console.WriteLine($"Ошибка: Обращение по некорректному индексу коллекции!");
+                    Console.WriteLine($"Error! Incorrect index");
                 }
+            }
         }
-    }
     }
 }
